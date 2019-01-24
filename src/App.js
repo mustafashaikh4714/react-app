@@ -23,9 +23,10 @@ class App extends Component {
         },
     ]
 }
+// mark complete
  markComplete = (id) => {
     this.setState({todos: this.state.todos.map(todo => {
-      if(todo.id == id) {
+      if(todo.id === id) {
         todo.completed = !todo.completed
       }
       return todo;
@@ -33,10 +34,16 @@ class App extends Component {
     
  }
 
+ //delete todo
+
+ delTodo = (id) => {
+   this.setState({todos: [...this.state.todos.filter(todo => todo.id !== id)]})
+ }
+
   render() {
     return (
       <div className="App">
-        <Todos todos={this.state.todos} markComplete={this.markComplete} />
+        <Todos todos={this.state.todos} markComplete={this.markComplete} delTodo={this.delTodo} />
       </div>
     );
   }
